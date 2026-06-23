@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Based Resume Ranking System</title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <h1>AI-Based Resume Ranking System</h1>
+            <p>Upload text resumes, enter a job description, and rank candidates by keyword match.</p>
+        </header>
+
+        <div class="messages">
+            <div th:if="${successMessage}" class="message success" th:text="${successMessage}"></div>
+            <div th:if="${errorMessage}" class="message error" th:text="${errorMessage}"></div>
+        </div>
+
+        <section class="card-grid">
+            <section class="card">
+                <h2>Upload Resume</h2>
+                <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Candidate name" />
+
+                    <label>Resume file (.txt or .md)</label>
+                    <input type="file" name="resumeFile" accept=".txt,.md" />
+
+                    <label>Or paste resume text</label>
+                    <textarea name="resumeText" rows="8" placeholder="Paste resume content here"></textarea>
+
+                    <button type="submit">Upload Candidate</button>
+                </form>
+            </section>
+
+            <section class="card">
+                <h2>Rank Candidates</h2>
+                <form th:action="@{/rank}" method="post">
+                    <label>Job description</label>
+                    <textarea name="jobDescription" rows="10" placeholder="Enter job description here" th:text="${jobDescription}"></textarea>
+                    <button type="submit">Rank Candidates</button>
+                </form>
+            </section>
+        </section>
+
+        <section class="results">
+            <div th:if="${rankedCandidates != null and !#lists.isEmpty(rankedCandidates) and rankedCandidatesByJob != null and !rankedCandidatesByJob.isEmpty()}">
+                <h2>Ranked Candidates</h2>
+                <p th:text="'Job description keywords are matched against uploaded resumes.'"></p>
+                <th:block th:each="jobEntry : ${rankedCandidatesByJob.entrySet()}">
+                    <div style="margin-bottom: 24px; padding: 16px; background: #f0f7ff; border-radius: 8px; border: 2px solid #3b82f6;">
+                        <h3 th:if="${jobEntry.key != 'Unranked'}" 
+                            th:text="${'Job: ' + (jobEntry.key.length() > 80 ? jobEntry.key.substring(0, 80) + '...' : jobEntry.key)}" 
+                            style="margin-top: 0; color: #1e40af;"></h3>
+                        <h3 th:if="${jobEntry.key == 'Unranked'}" style="margin-top: 0; color: #1e40af;">Unranked Candidates</h3>
+                        <table style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Score</th>
+                                    <th>Resume preview</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="candidate, iterStat : ${jobEntry.value}">
+                                    <td th:text="${iterStat.count}"></td>
+                                    <td th:text="${candidate.name}"></td>
+                                    <td>
+                                        <span th:text="${candidate.scorePercent} + '%'"></span>
+                                        <br/>
+                                        <small th:text="${candidate.scoreLabel}"></small>
+                                    </td>
+                                    <td th:text="${candidate.preview}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </th:block>
+            </div>
+
+            <div th:if="${rankedCandidates == null or #lists.isEmpty(rankedCandidates)}">
+                <h2>Saved Candidates</h2>
+                <div th:if="${#lists.isEmpty(candidates)}">
+                    <p>No candidates uploaded yet.</p>
+                </div>
+                <div th:unless="${#lists.isEmpty(candidates)}">
+                    <th:block th:each="jobEntry : ${candidatesByJob.entrySet()}">
+                        <div style="margin-bottom: 24px; padding: 16px; background: #f9fafb; border-radius: 8px; border: 1px solid #e5e7eb;">
+                            <h3 th:if="${jobEntry.key != 'Unranked'}" 
+                                th:text="${'Job: ' + (jobEntry.key.length() > 80 ? jobEntry.key.substring(0, 80) + '...' : jobEntry.key)}" 
+                                style="margin-top: 0;"></h3>
+                            <h3 th:if="${jobEntry.key == 'Unranked'}" style="margin-top: 0;">Unranked Candidates</h3>
+                            <table style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name</th>
+                                        <th>Score</th>
+                                        <th>Resume preview</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="candidate, iterStat : ${jobEntry.value}">
+                                        <td th:text="${iterStat.count}"></td>
+                                        <td th:text="${candidate.name}"></td>
+                                        <td>
+                                            <span th:text="${candidate.scorePercent} + '%'"></span>
+                                            <br/>
+                                            <small th:text="${candidate.scoreLabel}"></small>
+                                        </td>
+                                        <td th:text="${candidate.preview}"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Resume ranking is performed using keyword matching and simple relevance scoring.</p>
+        </footer>
+    </div>
+</body>
+</html>

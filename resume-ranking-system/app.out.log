@@ -1,0 +1,60 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.15)
+
+2026-06-22T20:01:21.225+05:30  INFO 25852 --- [resume-ranking-system] [           main] c.r.r.ResumeRankingSystemApplication     : Starting ResumeRankingSystemApplication v0.0.1-SNAPSHOT using Java 25.0.2 with PID 25852 (C:\Users\ruchi\Downloads\resume-ranking-system\resume-ranking-system\target\resume-ranking-system-0.0.1-SNAPSHOT.jar started by ruchi in C:\Users\ruchi\Downloads\resume-ranking-system\resume-ranking-system)
+2026-06-22T20:01:21.230+05:30  INFO 25852 --- [resume-ranking-system] [           main] c.r.r.ResumeRankingSystemApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-06-22T20:01:21.789+05:30  INFO 25852 --- [resume-ranking-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-22T20:01:21.846+05:30  INFO 25852 --- [resume-ranking-system] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interface.
+2026-06-22T20:01:22.343+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-06-22T20:01:22.361+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-06-22T20:01:22.362+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-22T20:01:22.397+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-06-22T20:01:22.398+05:30  INFO 25852 --- [resume-ranking-system] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1117 ms
+2026-06-22T20:01:22.592+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-22T20:01:22.642+05:30  INFO 25852 --- [resume-ranking-system] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.53.Final
+2026-06-22T20:01:22.677+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-06-22T20:01:22.960+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-22T20:01:23.015+05:30  INFO 25852 --- [resume-ranking-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-06-22T20:01:23.364+05:30  INFO 25852 --- [resume-ranking-system] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@66715ca9
+2026-06-22T20:01:23.368+05:30  INFO 25852 --- [resume-ranking-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-06-22T20:01:23.426+05:30  WARN 25852 --- [resume-ranking-system] [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-22T20:01:23.450+05:30  INFO 25852 --- [resume-ranking-system] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.46
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-06-22T20:01:24.105+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-22T20:01:24.152+05:30  INFO 25852 --- [resume-ranking-system] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22T20:01:24.397+05:30  WARN 25852 --- [resume-ranking-system] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-22T20:01:24.420+05:30  INFO 25852 --- [resume-ranking-system] [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2026-06-22T20:01:24.683+05:30  WARN 25852 --- [resume-ranking-system] [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-06-22T20:01:24.686+05:30  INFO 25852 --- [resume-ranking-system] [           main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-06-22T20:01:24.690+05:30  INFO 25852 --- [resume-ranking-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-06-22T20:01:24.696+05:30  INFO 25852 --- [resume-ranking-system] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-06-22T20:01:24.707+05:30  INFO 25852 --- [resume-ranking-system] [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-06-22T20:01:24.719+05:30 ERROR 25852 --- [resume-ranking-system] [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8081 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8081 or configure this application to listen on another port.
+

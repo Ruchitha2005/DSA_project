@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Resume Tools</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 20px; max-width: 1100px; margin: 24px auto; }
+        .card { padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+        .card h2 { margin-top: 0; }
+        .embed-area iframe { width: 100%; height: 680px; border: 1px solid #e6eaf0; border-radius: 6px; }
+        .meta { display:flex; gap:12px; align-items:center; }
+        .meta .stat { padding:12px 16px; background:#f6f8fb; border-radius:8px; }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <h1>Dashboard</h1>
+            <p>Quick access to your resume ranking tools and stats.</p>
+        </header>
+
+        <section class="dashboard-grid">
+            <div class="card">
+                <div class="meta">
+                    <div>
+                        <h2>AI-Based Resume Ranking System</h2>
+                        <p>Upload resumes, enter job descriptions and rank candidates.</p>
+                    </div>
+                    <div class="stat">
+                        <strong th:text="${totalCandidates}">0</strong>
+                        <div>Uploaded candidates</div>
+                    </div>
+                </div>
+                <p>
+                    <a href="/app" class="button">Open Resume Ranking App</a>
+                </p>
+            </div>
+
+            <div class="card embed-area">
+                <h2>Embedded Preview</h2>
+                <p>This iframe lets you interact with the resume app directly inside the dashboard.</p>
+                <iframe src="/app" title="Resume App Preview"></iframe>
+            </div>
+        </section>
+
+        <footer>
+            <p>Use the dashboard to manage and view ranking results quickly.</p>
+        </footer>
+    </div>
+</body>
+</html>
